@@ -29,7 +29,7 @@
 <body>
     <div class="container">
         <h1>Welcome to Task App</h1>
-        <button onclick="location.href='{{ route('task.create') }}'">Add Task</button>
+        <button onclick="location.href='{{ route('task.create') }}'">Add New Task</button>
     </div>
 </body>
 </html>
