@@ -31,6 +31,23 @@
         <h1>Welcome to Task App</h1>
         <button onclick="location.href='{{ route('task.create') }}'">Add New Task</button>
     </div>
+
+    {{-- <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($tasks as $task)
+                <tr>
+                    <td>{{ $task->name }}</td>
+                    <td>{{ $task->category }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table> --}}
 </body>
 </html>
 

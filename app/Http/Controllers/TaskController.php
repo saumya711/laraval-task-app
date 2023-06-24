@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+    public function index()
+    {
+        $tasks = Task::all();
+        return view('home', compact('tasks'));
+    }
+
     public function create()
 {
     return view('task.create');
