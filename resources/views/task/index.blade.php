@@ -63,8 +63,30 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Task App</h1>
-        <button onclick="location.href='{{ route('task-list') }}'">Go to the Task List</button>
+        <button onclick="location.href='{{ route('task-create') }}'">Add New Task</button>
+    <div >
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($tasks as $task)
+                    <tr>
+                        <td>{{ $task->name }}</td>
+                        <td>{{ $task->category }}</td>
+                        <td>
+                            <button class="edit">Update</button>
+                            <button class="delete" >Delete</button>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>

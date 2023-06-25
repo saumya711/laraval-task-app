@@ -10,7 +10,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = Task::all();
-        return view('home', compact('tasks'));
+        return view('task.index', compact('tasks'));
     }
 
     public function create()
@@ -27,6 +27,6 @@ public function store(Request $request)
 
     Task::create($validatedData);
 
-    return redirect('/')->with('success', 'Task created successfully!');
+    return redirect('task-list')->with('success', 'Task created successfully!');
 }
 }
