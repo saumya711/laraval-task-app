@@ -29,4 +29,23 @@ public function store(Request $request)
 
     return redirect('task-list')->with('success', 'Task created successfully!');
 }
+
+public function edit($id) 
+{
+    $task = Task::FindOrFail($id);
+    return view('task.edit', compact('task'));
+}
+
+public function update(Request $request, $id)
+{
+    $validatedData = $request->validate([
+        'name' => 'required',
+        'category' => 'required',
+    ]);
+
+    $task = Task::findOrFail($id);
+    $task->update($validatedData);
+
+    return redirect('task-list')->with('success', 'Task updated successfully!');
+}
 }
