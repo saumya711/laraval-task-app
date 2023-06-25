@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('home');
-// });
+Route::get('/', function () {
+    return view('home');
+});
 
-Route::get('/',[TaskController::class,'index'])->name('home');
+Route::get('task-list',[TaskController::class,'index'])->name('task-list');
+Route::get('task-create',[TaskController::class,'create'])->name('task-create');
 
 Route::resource('task', TaskController::class);
