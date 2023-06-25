@@ -79,7 +79,7 @@
                         <td>{{ $task->name }}</td>
                         <td>{{ $task->category }}</td>
                         <td>
-                            <button class="edit">Update</button>
+                            <button class="edit" onclick="location.href='{{ route('task-edit', $task->id) }}'">Update</button>
                             <button class="delete" >Delete</button>
                         </td>
                     </tr>
