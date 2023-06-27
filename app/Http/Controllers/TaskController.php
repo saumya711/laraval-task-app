@@ -14,38 +14,46 @@ class TaskController extends Controller
     }
 
     public function create()
-{
-    return view('task.create');
-}
+    {
+        return view('task.create');
+    }
 
-public function store(Request $request)
-{
-    $validatedData = $request->validate([
-        'name' => 'required',
-        'category' => 'required',
-    ]);
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'category' => 'required',
+        ]);
 
-    Task::create($validatedData);
+        Task::create($validatedData);
 
-    return redirect('task-list')->with('success', 'Task created successfully!');
-}
+        return redirect('task-list')->with('success', 'Task created successfully!');
+    }
 
-public function edit($id) 
-{
-    $task = Task::FindOrFail($id);
-    return view('task.edit', compact('task'));
-}
+    public function edit($id) 
+    {
+        $task = Task::FindOrFail($id);
+        return view('task.edit', compact('task'));
+    }
 
-public function update(Request $request, $id)
-{
-    $validatedData = $request->validate([
-        'name' => 'required',
-        'category' => 'required',
-    ]);
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'category' => 'required',
+        ]);
 
-    $task = Task::findOrFail($id);
-    $task->update($validatedData);
+        $task = Task::findOrFail($id);
+        $task->update($validatedData);
 
-    return redirect('task-list')->with('success', 'Task updated successfully!');
-}
+        return redirect('task-list')->with('success', 'Task updated successfully!');
+    }
+
+    public function destroy($id)
+    {
+        $task = Task::findOrFail($id);
+        $task->delete();
+
+        return redirect()->back()->with('success', 'Task deleted successfully!');
+    }
 }

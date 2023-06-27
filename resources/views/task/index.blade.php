@@ -35,6 +35,10 @@
         button.delete {
             background-color: rgb(205, 83, 83);
             color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
         }
 
         table {
@@ -63,6 +67,7 @@
 </head>
 <body>
     <div class="container">
+        <h1>Task List Page</h1>
         <button onclick="location.href='{{ route('task-create') }}'">Add New Task</button>
     <div >
         <table>
@@ -79,8 +84,14 @@
                         <td>{{ $task->name }}</td>
                         <td>{{ $task->category }}</td>
                         <td>
-                            <button class="edit" onclick="location.href='{{ route('task-edit', $task->id) }}'">Update</button>
-                            <button class="delete" >Delete</button>
+                            <div style="display: flex; gap: 10px;">
+                                <button class="edit" onclick="location.href='{{ route('task-edit', $task->id) }}'">Update</button>
+                                <form action="{{ route('task.destroy', $task->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this task?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="delete" type="submit">Delete</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
