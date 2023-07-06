@@ -58,7 +58,7 @@
     </style>
 </head>
 <body>
-    <form action="{{ route('task.store') }}" method="post">
+    <form action="{{ route('task-store') }}" method="post">
         @csrf
         <h1>Create New Task</h1>
         <div>
@@ -67,7 +67,11 @@
         </div>
         <div>
             <label for="category">Task Category:</label>
-            <input type="text" name="category" id="category">
+                <select name="category" id="category">
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
         </div>
         <div class="button-container">
             <button type="submit">Save</button>
